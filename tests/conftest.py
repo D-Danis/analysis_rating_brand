@@ -3,8 +3,7 @@ import pytest
 from typing import List
 from pathlib import Path
 
-from app.datastore import DataStore
-from app.reader import Record
+from app import DataStore, Record
 
 
 def write_csv(path: Path, 

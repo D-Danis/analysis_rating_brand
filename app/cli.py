@@ -2,10 +2,10 @@ import argparse
 import sys
 from typing import List
 
-from app.datastore import DataStore
-from app.reader import CSVReader
-from app.reports.registry import ReportFactory
-from app.errors import AppError
+from .datastore import DataStore
+from .reader import CSVReader
+from .reports import ReportFactory
+from .errors import AppError
 
 
 def parse_args(argv: List[str]|None = None

@@ -4,11 +4,14 @@
 import pytest
 from contextlib import nullcontext as does_not_raise
 
-import app.cli as cli_module  
-from app.datastore import DataStore
-from app.reader import CSVReader
-from app.errors import AppError
-from app.reports.registry import ReportFactory
+from app import (
+                    DataStore,
+                    CSVReader,
+                    AppError,
+                    ReportFactory,
+                    parse_args,
+                    run
+                )
 
 
 @pytest.mark.parametrize(
@@ -23,7 +26,7 @@ from app.reports.registry import ReportFactory
 def test_parse_args_basic(path, agregate, exeption):
     with exeption:
         argv = ["--files", path, "--report", agregate]
-        ns = cli_module.parse_args(argv)
+        ns = parse_args(argv)
         assert ns.files == [path]
         assert ns.report == agregate
 
@@ -41,7 +44,7 @@ def test_run_unexpected_exception(path, agregate,
     monkeypatch.setattr("app.cli.CSVReader", CSVReader)
     monkeypatch.setattr("app.cli.DataStore", DataStore)
     monkeypatch.setattr("app.cli.ReportFactory", ReportFactory)
-    rc = cli_module.run(["--files", path, "--report", agregate])
+    rc = run(["--files", path, "--report", agregate])
     captured = capsys.readouterr()
     assert rc == 1
     assert "Unexpected error" in captured.err
@@ -55,7 +58,7 @@ def test_run_app_error(monkeypatch, capsys):
     monkeypatch.setattr("app.cli.CSVReader", CSVReader)
     monkeypatch.setattr("app.cli.DataStore", BadDataStore)
     monkeypatch.setattr("app.cli.ReportFactory", ReportFactory)
-    rc = cli_module.run(["--files", "f.csv",
+    rc = run(["--files", "f.csv",
                          "--report", "average-rating"])
     captured = capsys.readouterr()
     assert rc == 2

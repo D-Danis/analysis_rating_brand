@@ -5,15 +5,21 @@ import pytest
 from contextlib import nullcontext as does_not_raise
 from tabulate import tabulate
 
-from app.datastore import DataStore
-from app.errors import ReportError
-from app.reports.base import ReportBase
-from app.reports.registry import ReportFactory
-from app.reports.rating.average_rating import AverageRating
-from app.reports.rating.max_rating import MaxRating
-from app.reports.rating.median_rating import MedianRating
-from app.reports.rating.min_rating import MinRating
-from tests.conftest import normalize_table_str
+
+from .conftest import normalize_table_str
+from app import (
+                    DataStore,
+                    ReportBase,
+                    ReportFactory,
+                    ReportError
+                )
+from app.reports.rating import (
+                                    AverageRating,
+                                    MaxRating,
+                                    MedianRating,
+                                    MinRating
+                                )
+
 
 
 @pytest.mark.parametrize(

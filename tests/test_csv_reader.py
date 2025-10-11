@@ -4,9 +4,13 @@
 import pytest
 from contextlib import nullcontext as does_not_raise
 
-from app.reader import CSVReader, Record
-from app.errors import CSVFormatError,\
-                    RecordParseError, FileReadError
+from app import ( 
+                    CSVReader,
+                    Record,
+                    CSVFormatError,
+                    RecordParseError,
+                    FileReadError 
+                )
 
 
 @pytest.mark.parametrize(
@@ -48,7 +52,9 @@ def test_read_single_files(headers,
       ["galaxy s23 ultra", "samsung", 1199, 4.8],
       ["redmi note 12", "xiaomi", 199, 4.6]], 3),
 ])
-def test_read_single_len_option(headers, count, write_csv_fn):
+def test_read_single_len_option(headers,
+                                count,
+                                write_csv_fn):
     header = ["name", "brand", "price", "rating"]
     p = write_csv_fn("one.csv", header, headers)
     reader = CSVReader([str(p)])
@@ -76,8 +82,10 @@ def test_read_single_len_option(headers, count, write_csv_fn):
         ["apple", "samsung", "xiaomi"]
      ),
 ])
-def test_read_multiple_files_and_rows(header1, header2, 
-                                      expected_brand, write_csv_fn):
+def test_read_multiple_files_and_rows(header1,
+                                      header2, 
+                                      expected_brand,
+                                      write_csv_fn):
     header = ["name", "brand", "price", "rating"]
     p1 = write_csv_fn("a.csv", header, header1)
     p2 = write_csv_fn("b.csv", header, header2)

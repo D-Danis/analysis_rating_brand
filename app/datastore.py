@@ -1,8 +1,8 @@
 from collections import defaultdict
 from typing import Dict, List, Iterable
 
-from app.reader import Record
-from app.errors import RecordParseError
+from .reader import Record
+from .errors import RecordParseError
 
 
 class DataStore:

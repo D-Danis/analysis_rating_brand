@@ -4,9 +4,11 @@
 import pytest
 from contextlib import nullcontext as does_not_raise
 
-from app.datastore import DataStore
-from app.reader import Record
-from app.errors import  RecordParseError
+from app import (
+                    DataStore,
+                    Record,
+                    RecordParseError
+                )
 
 
 @pytest.mark.parametrize(

@@ -4,7 +4,7 @@
 import pytest
 from contextlib import nullcontext as does_not_raise
 
-from app.datastatict import DataStatistics
+from app import DataStatistics
 
 
 @pytest.mark.parametrize(

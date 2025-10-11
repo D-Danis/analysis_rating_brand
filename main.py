@@ -1,7 +1,7 @@
 #!/usr/bin/.venv python3
 import sys
 
-from app.cli import run
+from app import run
 
 
 def main() -> None:

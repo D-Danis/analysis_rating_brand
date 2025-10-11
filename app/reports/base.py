@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from app.datastatict import DataStatistics
-from app.datastore import DataStore
+from ..datastatict import DataStatistics
+from ..datastore import DataStore
 
 
 class ReportBase(ABC):

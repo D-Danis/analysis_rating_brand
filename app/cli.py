@@ -3,9 +3,9 @@ import sys
 from typing import List
 
 from .datastore import DataStore
+from .errors import AppError
 from .reader import CSVReader
 from .reports import ReportFactory
-from .errors import AppError
 
 
 def parse_args(argv: List[str] | None = None) -> argparse.Namespace:

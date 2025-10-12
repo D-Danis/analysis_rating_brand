@@ -1,8 +1,9 @@
 # Тесты для app.datastore.DataStore
 # Запуск
 # pytest -v tests/test_datastore.py
-import pytest
 from contextlib import nullcontext as does_not_raise
+
+import pytest
 
 from app import DataStore, Record, RecordParseError
 

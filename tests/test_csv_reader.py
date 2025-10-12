@@ -1,10 +1,11 @@
 # Тесты для app.reader.CSVReader
 # Запуск
 # pytest -q tests/test_csv_reader.py
-import pytest
 from contextlib import nullcontext as does_not_raise
 
-from app import CSVReader, Record, CSVFormatError, RecordParseError, FileReadError
+import pytest
+
+from app import CSVFormatError, CSVReader, FileReadError, Record, RecordParseError
 
 
 @pytest.mark.parametrize(

@@ -1,14 +1,15 @@
 # Тесты для app.reports
 # Запуск
 # pytest -v tests/test_reports.py
-import pytest
 from contextlib import nullcontext as does_not_raise
+
+import pytest
 from tabulate import tabulate
 
+from app import DataStore, ReportBase, ReportError, ReportFactory
+from app.reports.rating import AverageRating, MaxRating, MedianRating, MinRating
 
 from .conftest import normalize_table_str
-from app import DataStore, ReportBase, ReportFactory, ReportError
-from app.reports.rating import AverageRating, MaxRating, MedianRating, MinRating
 
 
 @pytest.mark.parametrize(

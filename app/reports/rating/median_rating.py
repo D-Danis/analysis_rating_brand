@@ -1,5 +1,6 @@
-from tabulate import tabulate
 from typing import List, Tuple
+
+from tabulate import tabulate
 
 from app.datastore import DataStore
 from app.reports.base import ReportBase

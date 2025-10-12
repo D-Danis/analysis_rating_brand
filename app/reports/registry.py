@@ -1,10 +1,10 @@
 from typing import Dict, Type
 
 from ..datastore import DataStore
+from ..errors import ReportError
 from .base import ReportBase
 from .price import AveragePrice, MaxPrice, MedianPrice, MinPrice
 from .rating import AverageRating, MaxRating, MedianRating, MinRating
-from ..errors import ReportError
 
 
 class ReportFactory:

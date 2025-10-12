@@ -1,10 +1,11 @@
 # Тесты для app.cli
 # Запуск
 # pytest -v tests/test_cli.py
-import pytest
 from contextlib import nullcontext as does_not_raise
 
-from app import DataStore, CSVReader, AppError, ReportFactory, parse_args, run
+import pytest
+
+from app import AppError, CSVReader, DataStore, ReportFactory, parse_args, run
 
 
 @pytest.mark.parametrize(

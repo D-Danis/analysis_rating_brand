@@ -2,7 +2,7 @@ import csv
 from dataclasses import dataclass
 from typing import Iterable, Iterator, List
 
-from .errors import FileReadError, CSVFormatError, RecordParseError
+from .errors import CSVFormatError, FileReadError, RecordParseError
 
 
 @dataclass

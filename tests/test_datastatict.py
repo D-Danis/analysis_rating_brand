@@ -1,8 +1,9 @@
 # Тесты для app.datastatict.DataStatict
 # Запуск
 # pytest -v tests/test_datastatict.py
-import pytest
 from contextlib import nullcontext as does_not_raise
+
+import pytest
 
 from app import DataStatistics
 

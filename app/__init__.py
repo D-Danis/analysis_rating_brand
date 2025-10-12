@@ -1,7 +1,6 @@
-from .cli import run, parse_args
+from .cli import parse_args, run
 from .datastatict import DataStatistics
 from .datastore import DataStore
-from .reader import CSVReader, Record
 from .errors import (
     AppError,
     CSVFormatError,
@@ -9,6 +8,7 @@ from .errors import (
     RecordParseError,
     ReportError,
 )
+from .reader import CSVReader, Record
 from .reports import ReportBase, ReportFactory
 
 __all__ = [

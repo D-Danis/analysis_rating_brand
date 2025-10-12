@@ -4,24 +4,18 @@
 import pytest
 from contextlib import nullcontext as does_not_raise
 
-from app import (
-                    DataStore,
-                    CSVReader,
-                    AppError,
-                    ReportFactory,
-                    parse_args,
-                    run
-                )
+from app import DataStore, CSVReader, AppError, ReportFactory, parse_args, run
 
 
 @pytest.mark.parametrize(
-    "path, agregate, exeption", [
+    "path, agregate, exeption",
+    [
         (["a.csv", "b.csv"], "average-rating", does_not_raise()),
         (["a.csv"], "max-rating", does_not_raise()),
         (["a.csv", "b.csv", "c.csv"], "min-rating", does_not_raise()),
         (["a.csv"], "median-rating", does_not_raise()),
         (["a.csv"], "", pytest.raises(SystemExit)),
-    ]
+    ],
 )
 def test_parse_args_basic(path, agregate, exeption):
     with exeption:
@@ -32,15 +26,15 @@ def test_parse_args_basic(path, agregate, exeption):
 
 
 @pytest.mark.parametrize(
-    "path, agregate", [
+    "path, agregate",
+    [
         (["a.csv", "b.csv"], "average-rating"),
         (["a.csv"], "max-rating"),
         (["a.csv", "b.csv", "c.csv"], "min-rating"),
         (["a.csv"], "median-rating"),
-    ]
+    ],
 )
-def test_run_unexpected_exception(path, agregate, 
-                                  monkeypatch, capsys):
+def test_run_unexpected_exception(path, agregate, monkeypatch, capsys):
     monkeypatch.setattr("app.cli.CSVReader", CSVReader)
     monkeypatch.setattr("app.cli.DataStore", DataStore)
     monkeypatch.setattr("app.cli.ReportFactory", ReportFactory)
@@ -58,8 +52,7 @@ def test_run_app_error(monkeypatch, capsys):
     monkeypatch.setattr("app.cli.CSVReader", CSVReader)
     monkeypatch.setattr("app.cli.DataStore", BadDataStore)
     monkeypatch.setattr("app.cli.ReportFactory", ReportFactory)
-    rc = run(["--files", "f.csv",
-                         "--report", "average-rating"])
+    rc = run(["--files", "f.csv", "--report", "average-rating"])
     captured = capsys.readouterr()
     assert rc == 2
     assert "Error 123" in captured.err

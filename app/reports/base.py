@@ -6,11 +6,12 @@ from ..datastore import DataStore
 
 class ReportBase(ABC):
     """
-    Базовый класс для отчётов. 
+    Базовый класс для отчётов.
     Каждый отчёт должен реализовать методы:
     - build: формирует внутренние данные отчёта из DataStore
-    - render: возвращает представление 
+    - render: возвращает представление
     """
+
     name: str
 
     def __init__(self, datastore: DataStore) -> None:

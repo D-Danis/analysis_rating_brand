@@ -8,15 +8,14 @@ from app.reports.base import ReportBase
 class MedianPrice(ReportBase):
     name = "median-price"
 
-    def __init__(self, 
-                 datastore: DataStore, 
-                 precision: int = 2, 
-                 top: int | None = None) -> None:
+    def __init__(
+        self, datastore: DataStore, precision: int = 2, top: int | None = None
+    ) -> None:
         super().__init__(datastore)
         self.precision = precision
         self.top = top
         self._rows: List[Tuple[str, float]] = []
-        
+
     def build(self) -> None:
         median = self.stats.median(self.datastore._brand_price)
         rows = list(median.items())
@@ -27,11 +26,7 @@ class MedianPrice(ReportBase):
 
     def render(self) -> str:
         headers = ["brand", "price"]
-        table = [(name,
-                  f"{avg:.{self.precision}f}")
-                 for name, avg in self._rows]
-        return tabulate(table,
-                        headers=headers,
-                        tablefmt="github",
-                        stralign="left",
-                        numalign="right")
+        table = [(name, f"{avg:.{self.precision}f}") for name, avg in self._rows]
+        return tabulate(
+            table, headers=headers, tablefmt="github", stralign="left", numalign="right"
+        )

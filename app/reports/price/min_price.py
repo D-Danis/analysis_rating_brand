@@ -4,8 +4,9 @@ from tabulate import tabulate
 
 from app.datastore import DataStore
 from app.reports.base import ReportBase
+from app.reports.registry import register_command
 
-
+@register_command
 class MinPrice(ReportBase):
     name = "min-price"
 

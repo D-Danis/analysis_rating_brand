@@ -1,4 +1,5 @@
 from .base import ReportBase
-from .registry import ReportFactory
-
-__all__ = [ReportBase, ReportFactory]
+from .factory import ReportFactory
+from .registry import register_command
+from .price import AveragePrice, MaxPrice, MedianPrice, MinPrice
+from .rating import AverageRating, MaxRating, MedianRating, MinRating
